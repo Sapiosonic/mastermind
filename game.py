@@ -7,7 +7,7 @@ CODE_LENGTH = 4
 def generate_code():
 
   code = []
-  
+
   for _ in range(CODE_LENGTH):
     color = random.choice(COLORS)
     code.append(color)
@@ -59,7 +59,7 @@ def check_code(guess, real_code):
 
 def game():
 
-  print(f"Welcome to masterminf, you have {TRIES} to guess the code.")
+  print(f"Welcome to mastermind, you have {TRIES} to guess the code.")
   print("The valid colors are", *COLORS)
 
   code = generate_code()
