@@ -3,8 +3,11 @@ import random
 COLORS = ["R", "G", "B", "Y", "W", "O"]
 TRIES = 10
 CODE_LENGTH = 4
+
 def generate_code():
+
   code = []
+  
   for _ in range(CODE_LENGTH):
     color = random.choice(COLORS)
     code.append(color)
@@ -52,3 +55,29 @@ def check_code(guess, real_code):
       color_counts[guess_color] -= 1
 
   return correct_positions, incorrect_positions
+
+
+def game():
+
+  print(f"Welcome to masterminf, you have {TRIES} to guess the code.")
+  print("The valid colors are", *COLORS)
+
+  code = generate_code()
+
+  for attempts in range(1, TRIES + 1):
+
+    guess = guess_code()
+    correct_positions, incorrect_positions = check_code(guess, code)
+
+    if correct_positions == CODE_LENGTH:
+      print(f"You guessed the code in {attempts} tries!")
+      break
+
+    print(f"Correct positions: {correct_positions} | Incorrect positions: {incorrect_positions}")
+
+  else:
+    print("You ran out of tries. The code was:", *code)
+
+
+if __name__ == "__main__":
+  game()
